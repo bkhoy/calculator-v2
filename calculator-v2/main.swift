@@ -49,6 +49,9 @@ func findSum(values: [Int]) -> Int {
 
 //multiplication
 func findProduct(values: [Int]) -> Int {
+    if (values.isEmpty) {
+        return 0
+    }
     var total = 1
     for value in values {
         total *= value
@@ -63,6 +66,9 @@ func count(values: [Int]) -> Int {
 
 //average
 func findAvg(values: [Int]) -> Int {
+    if (values.isEmpty) {
+        return 0
+    }
     return findSum(values) / count(values)
 }
 
@@ -87,4 +93,32 @@ print("Generic function array count: \(findMathResult(sampleArr, math: count))")
 print("Generic function array average: \(findMathResult(sampleArr, math: findAvg))")
 
 
-//tuples and dictionaries
+//tuples
+typealias point = (Int, Int)
+func addTuples (pt1: point, pt2: point) -> point {
+    return (pt1.0 + pt2.0, pt1.1 + pt2.1)
+}
+
+func subtractTuples (pt1: point, pt2: point) -> point {
+    return (pt1.0 - pt2.0, pt1.1 - pt2.1)
+}
+
+//test tuples
+print("(1, 4) + (2, 2) = \(addTuples((1, 4), pt2: (2, 2)))")
+print("(1, 4) - (2, 2) = \(subtractTuples((1, 4), pt2: (2, 2)))")
+
+//dictionaries
+typealias pointDictionary = Dictionary<String, Double>
+
+func addPointDict(x: pointDictionary, y: pointDictionary) {
+    
+}
+
+
+
+
+
+
+
+
+

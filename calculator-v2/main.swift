@@ -38,7 +38,7 @@ print("10 * 2 = \(calculate(10, num2: 2, op: multiply))")
 print("10 / 2 = \(calculate(10, num2: 2, op: divide))")
 
 
-//addition and average functions
+//addition
 func findSum(values: [Int]) -> Int {
     var total = 0
     for value in values {
@@ -47,22 +47,44 @@ func findSum(values: [Int]) -> Int {
     return total
 }
 
+//multiplication
+func findProduct(values: [Int]) -> Int {
+    var total = 1
+    for value in values {
+        total *= value
+    }
+    return total
+}
+
+//count
+func count(values: [Int]) -> Int {
+    return values.count
+}
+
+//average
 func findAvg(values: [Int]) -> Int {
-    return findSum(values) / values.count
+    return findSum(values) / count(values)
 }
 
 //test addition and average array functions
 let sampleArr = [1, 2, 3, 4, 5]
-print("Add all of the values in the array: \(findSum(sampleArr))")
-print("Find the average of the values in array: \(findAvg(sampleArr))")
+print("Array addition: \(findSum(sampleArr))")
+print("Array multiplication: \(findProduct(sampleArr))")
+print("Array count: \(count(sampleArr))")
+print("Array average: \(findAvg(sampleArr))")
+
 
 //generic addition and average array function
-typealias handleSumOrAdd = [Int] -> Int
-func findSumOrAvg (arr : [Int], sumOrAdd: handleSumOrAdd) -> Int {
-    return sumOrAdd(arr)
+typealias handleMoreMath = [Int] -> Int
+func findMathResult (arr : [Int], math: handleMoreMath) -> Int {
+    return math(arr)
 }
-//test generic function
-print("Finding sum using generic function: \(findSumOrAvg(sampleArr, sumOrAdd: findSum))")
-print("Finding average using generic function: \(findSumOrAvg(sampleArr, sumOrAdd: findAvg))")
 
-//dictionary
+//test generic function
+print("Generic function array addition: \(findMathResult(sampleArr, math: findSum))")
+print("Generic function array multiplication: \(findMathResult(sampleArr, math: findProduct))")
+print("Generic function array count: \(findMathResult(sampleArr, math: count))")
+print("Generic function array average: \(findMathResult(sampleArr, math: findAvg))")
+
+
+//tuples and dictionaries

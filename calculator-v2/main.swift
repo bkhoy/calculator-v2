@@ -107,16 +107,50 @@ func subtractTuples (pt1: point, pt2: point) -> point {
 print("(1, 4) + (2, 2) = \(addTuples((1, 4), pt2: (2, 2)))")
 print("(1, 4) - (2, 2) = \(subtractTuples((1, 4), pt2: (2, 2)))")
 
-//dictionaries
-typealias pointDictionary = Dictionary<String, Double>
 
-func addPointDict(x: pointDictionary, y: pointDictionary) {
+
+//dictionaries
+typealias pointDictionary = [String : Double]
+
+func addPointDict(pt1: pointDictionary, pt2: pointDictionary) -> pointDictionary {
+    var result = ["x": 0.0, "y": 0.0]
+    for (key, _) in result {
+        if pt1[key] == nil && pt2[key] == nil {
+            return result
+        } else if pt1[key] == nil && pt2[key] != nil {
+            result[key] = pt2[key]!
+        } else if pt2[key] == nil && pt1[key] == nil {
+            result[key] = pt1[key]!
+        } else {
+            result[key] = pt1[key]! + pt2[key]!
+        }
+    }
     
+    return result
 }
 
+func multiplyPointDict(pt1: pointDictionary, pt2: pointDictionary) -> pointDictionary {
+    var result = ["x": 0.0, "y": 0.0]
+    for (key, _) in result {
+        if pt1[key] == nil && pt2[key] == nil {
+            return result
+        } else if pt1[key] == nil && pt2[key] != nil {
+            result[key] = pt2[key]!
+        } else if pt2[key] == nil && pt1[key] == nil {
+            result[key] = pt1[key]!
+        } else {
+            result[key] = pt1[key]! * pt2[key]!
+        }
+    }
+    
+    return result
+}
 
-
-
+print ("Adding the dictionaires \(addPointDict(["x": 1, "y": 2], pt2: ["x": 2, "y": 4]))")
+print ("Multiplying the dictionaries \(multiplyPointDict(["x": 1, "y": 2], pt2: ["x": 2, "y": 4]))")
+print ("ERROR HANDLING Adding the dictionaires \(addPointDict(["x": 1], pt2: ["x": 2, "y": 4]))")
+print ("ERROR HANDLING Multiplying the dictionaries \(multiplyPointDict(["y": 2], pt2: ["x": 2, "y": 4]))")
+print ("ERROR HANDLING Multiplying the dictionaries \(multiplyPointDict(["x": 1], pt2: ["x": 2, "y": 4]))")
 
 
 
